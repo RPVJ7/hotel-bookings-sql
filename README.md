@@ -1,90 +1,105 @@
 # hotel-bookings-sql
 SQL project analyzing hotel booking data
 
-Credit Card Transactions SQL Analysis Project
+Project Overview
 
-**Project Overview**
+This project explores a hotel bookings dataset from multiple hotels across Indian cities using SQL. The goal is to extract business insights that inform customer behavior, hotel performance, occupancy rates, and marketing effectiveness. It is part of a personal data portfolio hosted on GitHub.
 
-This SQL project explores a real-world dataset of credit card transactions across Indian cities. It answers complex business questions using SQL techniques such as CTEs, window functions, aggregations, and filtering. The goal is to derive insights into customer behavior, spend patterns, and card performance.
+**Dataset Schema**
 
-The project is part of a personal data portfolio to showcase business analytics thinking and advanced SQL skills.
+The analysis is based on four main tables:
 
-**Dataset Description**
+hotel_bookings
 
-The dataset consists of one main table: credit_card_transcations, with the following columns:
+Booking data including stay duration, channel, and pricing.
 
-transaction_id: Unique identifier of the transaction
+Key columns: booking_id, customer_id, hotel_id, booking_date, stay_start_date, number_of_nights, per_night_rate, booking_channel
 
-city: City where transaction occurred
+customers
 
-transaction_date: Date of the transaction
+Demographics and home city of each customer.
 
-card_type: Type of card used (Gold, Platinum, Silver, Signature)
+Key columns: customer_id, city_id, gender, dob
 
-exp_type: Type of expense (Bills, Fuel, etc.)
+hotels
 
-gender: Gender of cardholder (M/F)
+Metadata about each hotel, including capacity.
 
-amount: Amount spent in the transaction
+Key columns: id, name, city_id, capacity(no of rooms)
+
+cities
+
+Lookup table mapping city IDs to city names and states.
+
+Key columns: id, city, state
+
+Additional flattening logic is used in hotel_bookings_flatten for date-specific occupancy calculations.
 
 **Business Questions Answered**
 
-Top 5 cities by credit card spends and their percentage of total spend
+Who are the top customers booking in the same city they live in?(Top 5 ranked by volume and percentage)
 
-Highest spending month for each card type
+How much do female customers contribute in bookings and revenue per hotel?
 
-First transaction to cross 1,000,000 cumulative spend per card type
+How many bookings come from customers from other states (interstate travelers)?
 
-City with lowest percentage spend using Gold cards
+On which dates did each hotel see maximum occupancy?
 
-For each city, find highest and lowest expense types
+Which customers have booked hotels in at least 3 different states?
 
-Female spend contribution by each expense category
+What is the occupancy rate (percentage of rooms booked) per month per hotel?
 
-Card and expense type combo with highest MoM growth in Jan 2014
+Which dates were hotels fully occupied (at 100% capacity)?
 
-On weekends, which city had highest spend-to-transaction ratio?
+Which booking channel generated the most sales per hotel per month?
 
-Which city reached its 500th transaction the fastest?
+What is the overall percentage share of bookings by channel?
+
+How much revenue came from millennials vs Gen Z for each hotel?
+
+What is the average stay duration at each hotel?
+
+How far in advance do customers typically book?
+
+Which customers never made a booking?
+
+Which customers stayed in 3+ different hotels within the same month?
+
+**Business Value**
+
+Customer Segmentation: Understand behaviors of locals, travelers, females, and generations.
+
+Revenue Analysis: Quantify monetary contribution by segment and channel.
+
+Operational Planning: Monitor occupancy and peak demand days for resource allocation.
+
+Marketing Strategy: Identify top-performing booking channels.
 
 **Skills Demonstrated**
 
-SQL CTEs and window functions (ROW_NUMBER, SUM OVER)
+SQL for Data Exploration & Business Intelligence
 
-Month-over-month growth analysis
+Use of CTEs and nested queries
 
-Gender-based segmentation and contribution
+Window Functions (ROW_NUMBER())
 
-Ranking and filtering using subqueries
+Date Manipulation (stay windows, booking lead time)
 
-Time series and cumulative analysis
-
-Data quality filters (non-zero, valid joins)
-
-**Business Insights**
-
-Identify high-spend cities and card types for promotions
-
-Analyze expense preferences by geography
-
-Understand female purchasing behavior across categories
-
-Optimize campaigns for card-expense type combinations
-
-Detect spend surges or growth opportunities
+Dimensional joins for attribute enrichment
 
 **Project Files**
 
-credit_card_transactions.sql – SQL queries solving 9 complex problems
+hotel_booking_analysis.sql – SQL scripts answering all 14 business questions.
 
-credit_card_transcations.xlsx – Raw dataset with transaction details
+hotel_booking_project_and_data.xlsx – The dataset (structure of hotel_bookings, customers, hotels, cities).
 
 **How to Use**
 
-Load the dataset into your SQL engine (MySQL, PostgreSQL, etc.)
+Load the dataset into your SQL environment (e.g., MySQL, PostgreSQL, SQL Server).
 
-Run the queries in credit_card_transactions.sql
+Run each SQL block as outlined in the hotel_booking_analysis.sql file.
 
-Review outputs and tweak for additional KPIs
+Modify queries as needed to support your DBMS syntax.
 
-This project is a part of my data portfolio to demonstrate applied SQL analytics on finance-related datasets.
+This project is part of my public data portfolio to showcase practical SQL skills and business analytics thinking.
+
